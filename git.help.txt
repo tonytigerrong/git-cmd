@@ -1,0 +1,82 @@
+==== create a new branch remotely,create a local new branch , push it to remote repo ====
+0. git init (your work folder)
+1. git checkout
+eg. git checkout -b your_local_branch_name
+-- create a local branch 
+
+2. modify
+3. git push
+eg. git push -u origin your_local_branch_name
+-- push your_local_branch_name to remote origin repo
+
+4. if you want create a remote branch without creating a local branch
+git push origin HEAD:refs/heads/feature/3 ( create feature/3 branch on remote)
+
+
+
+==== merge a pull request (feature/2 -> develop)====
+Step 1: From your project repository, bring in the changes and test.
+
+git fetch origin
+-- fetch remote origin branches(develop&feature/2) from remote repo
+
+git checkout -b feature/2 origin/feature/2
+-- swtich to local feature/2 branch, prepare to merge to develop
+
+git merge origin/develop
+Step 2: Merge the changes mannuelly  and update on GitHub.
+
+git checkout develop
+git merge --no-ff feature/2
+git push origin develop
+
+Step 3: no conflict , click 'make pull merge'
+
+
+
+==== create a repo github ====
+1. create a repository in github
+2. create a local dir & cd into it & add a new file
+3. git init
+4. git add .
+5. git commit -m "init"
+6. git remote add origin https://github.com/tonytigerrong/git-cmd.git ( add local origin to remote)
+7. git push -u origin master
+
+
+==== merge mannully feature/1 to develop ====
+git checkout develop (switch local branch to develop)
+git pull origin develop (pull remote develop branch to local repo origin)
+git merge feature/1 (merge feature/1 to current local branch develop)
+-- edit local file, remove conflicts
+git add . ( add modified file of current develop branch)
+git commit -m 'merge'
+git push origin develop (push to remote repo)
+
+==== init repo / add 'origin' root folder to remote repo ====
+echo "# node_demos" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/tonytigerrong/node_demos.git (add 'origin' root folder to remote repo)
+git push -u origin master
+
+==== remove local and remote branch ====
+1. remove local branch develop
+git branch -d develop
+2. remove remote branch develop
+git push origin --delete develop
+
+==== git reset HEAD~1 --hard ====
+rollback 1 step
+==== rebase develop onto master====
+Helpful Url: https://git-scm.com/docs/git-rebase
+git fetch is the command that says "bring my local copy of the remote repository up to date."
+git pull says "bring the changes in the remote repository where I keep my own code."
+
+back ground : develop is pulled from master, and modified. in the same time, master has been modified as well.
+target		: rebase develop onto master
+
+git checkout master
+ 
+
