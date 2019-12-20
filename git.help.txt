@@ -1,4 +1,8 @@
+
 —- feature1 update—
+
+—— master update —-
+
 feature1
 master1
 ==== create a new branch remotely,create a local new branch , push it to remote repo ====
